@@ -11,10 +11,11 @@ int value;
 }SM;
 void input(SM *a)
 {
-    printf("Enter number of rows and columns: ");
+    printf("Enter the degree: ");
     int m,n,k=1,item;
     int i,j;
-    scanf("%d %d",&m,&n);
+    scanf("%d",&m);
+    n=m;
     m++;
     n++;
     a[0].row=m;
