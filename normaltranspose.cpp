@@ -13,12 +13,13 @@ void input(SM *a)
 {
     cout<<"Enter number of rows and columns: ";
     int m,n,k=1,item;
+    int i,j;
     cin>>m>>n;
     a[0].row=m;
     a[0].column=n;
     cout<<"Enter the elements: ";
-    for(int i=0;i<m;i++){
-        for(int j=0;j<n;j++){
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
             cin>>item;
             if(item==0)
                 continue;
@@ -30,44 +31,23 @@ void input(SM *a)
     }
     a[0].value=k-1;
 }
-void SM::display(SM *a)
+void display(SM *a)
 {
-    cout<<"Fast transpose is : "<<endl<<"Row\t"<<"Column\t"<<"Value\t"<<endl;
+    cout<<"Matrix is : "<<endl<<"Row\t"<<"Column\t"<<"Value\t"<<endl;
     for(int i=0;i<=a[0].value;i++)
     {
         cout<<a[i].row<<"\t"<<a[i].column<<"\t"<<a[i].value<<endl;
     }
 
 }
-void SM::transpose(SM *a, SM *b)
-{
-    int i,j,n,currentb;
-    n=a[0].value;
-    b[0].row=a[0].column;
-    b[0].column=a[0].row;
-    b[0].value=n;
-    if(n>0)
-    {
-        currentb=1;
-        for(i=0;i<a[0].column;i++)
-        {
-            for(j=1;j<=n;j++)
-            {
-                if(a[j].column==i)
-                {
-                    b[currentb].row=a[j].column;
-                    b[currentb].column=a[j].row;
-                    b[currentb].value=a[j].value;
-                    currentb++;
-                }
-            }
-        }
-    }
-}
 int main()
 {
-    SM a[20],b[20],c;
-    c.input(a);
-    c.transpose(a,b);
-    c.display(b);
+    SM a[100],b[100];
+    input(a);
+    input(b);
+    display(a);
+    display(b);
+    SM m[200];
+    //multiply(m);
+    return 0;
 }
