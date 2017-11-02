@@ -25,13 +25,13 @@ void read(pol *a)
 	printf("Entering input\n");
 	printf("Enter the degree of the polynomial\n");
 	scanf("%d",&(a->deg));
-	printf("%d ",a->deg);
+	//printf("%d ",a->deg);
 	printf("Enter the number of terms\n");
 	int n;
 	scanf("%d",&n);
-	printf("%d\n",n);
-	//printf("Enter the coefficients in the following manner:\n");
-	//printf("Coefficient\texponent of x\texponent of y:\n");
+	//printf("%d\n",n);
+	printf("Enter the coefficients in the following manner:\n");
+	printf("Coefficient\texponent of x\texponent of y:\n");
 	int c,i,j;
 	while(n--)
 	{
@@ -43,7 +43,8 @@ void read(pol *a)
 
 void display(pol *x)
 {
-	printf("%d\n",x->deg);
+	printf("The degree is - %d.\n",x->deg);
+	printf("The matrix is (The term of matrix (a,b) represents coefficient of x^a.y^b) - \n");
 	int i,j;
 	for(i=0;i<=x->deg;i++)
 	{

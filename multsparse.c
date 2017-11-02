@@ -20,7 +20,8 @@ void input(SM *a)
     n++;
     a[0].row=m;
     a[0].column=n;
-    printf("Enter the elements: ");
+    printf("\nEnter the elements as a 2-D matrix of size %d: \n",m);
+    printf("The matrix row number is equal to power of x and column number is the power of y. Enter the value for each term as the matrix element.\n");
     for(i=0;i<m;i++){
         for(j=0;j<n;j++){
             scanf("%d",&item);
@@ -36,9 +37,9 @@ void input(SM *a)
 }
 void display(SM *a)
 {
-    printf("Matrix is : \nRow\tColumn\tValue\t\n");
+    printf("Polynomial is : \nx power\ty power\tCoeff\t\n");
     int i;
-    for(i=0;i<=a[0].value;i++)
+    for(i=1;i<=a[0].value;i++)
     {
         printf("%d\t%d\t%d\n",a[i].row,a[i].column,a[i].value);;
     }
@@ -71,9 +72,12 @@ int main()
     SM a[100],b[100];
     input(a);
     input(b);
+    printf("\nThe input polynomials are - \n");
     display(a);
     display(b);
     SM m[200];
+    printf("\nMultiplying the polynomials... \n");
+    printf("\nThe final polynomial is - \n");
     multiply(m,a,b);
     display(m);
     return 0;
