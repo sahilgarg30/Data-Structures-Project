@@ -30,7 +30,7 @@ node *insert(int coeff,int row,node *head){					//Insert into the list and retur
 
 void display(node *head,int column){						//display function for the linked list.
 	if(head == NULL){
-		printf("Empty list\n");
+		printf("Empty list on row %d\n",column);
 		return;
 	}
 	node *temp = head;
@@ -86,7 +86,6 @@ node **add(node **sum,node **p1,node **p2,int n1,int n2)	//Main function which a
 			sum[i] = insert(t->coeff,t->row,sum[i]);
 			t = t->next;
 		}
-		display(sum[i],i);
 	}
 	for(i=0;i<n2;i++)										//Adding the smaller polynomial to the resultant polynomial.
 	{
@@ -101,13 +100,7 @@ node **add(node **sum,node **p1,node **p2,int n1,int n2)	//Main function which a
 				sum[i] = insert(t->coeff,t->row,sum[i]);	// Else insert this element into the resultant polynomial.
 			t = t->next;
 		}
-		//display(sum[i],i);
 	}
-	/*for(i=0;i<n1;i++)
-	{
-		display(sum[i],i);
-		printf("\n");
-	}*/
 	return sum;												// Return the final polynomial
 }
 
@@ -116,30 +109,37 @@ int main()
 {
 	//printf("Usage:\ndegree of first polynomial\nnumber of terms in the first polynomial\nEnter coefficients in the format of \"Coeffiecient exponent(x) exponent(y)\"\nDo the same for the second polynomial\n");
 	int n1,t1,n2,t2;
-	printf("Enter the degree and number of terms in the first polynomial : ");
+	//printf("Enter the degree and number of terms in the first polynomial : ");
 	scanf("%d %d",&n1,&t1);
 	node **p1,**p2;
 	n1++;
-	n2++;
+	
 	p1 = init(p1,n1);
-	p2 = init(p2,n2);
 	int coeff,x,y;
 	while(t1--)
 	{
 		scanf("%d %d %d",&coeff, &x, &y);
 		p1[x] = insert(coeff,y,p1[x]);
 	}
-	//for(int i=0;i<n1;i++)
-	//	display(p1[i]);
-	printf("\n\nEnter the degree and number of terms in the second polynomial : ");
+	printf("The first polynomial is:\n");
+	for(int i=0;i<n1;i++)
+		display(p1[i],i);
+	printf("\n\n");
+	//printf("\n\nEnter the degree and number of terms in the second polynomial : ");
+	
+	
 	scanf("%d %d",&n2,&t2);
+	n2++;
+	p2 = init(p2,n2);
 	while(t2--)
 	{
 		scanf("%d %d %d",&coeff, &x, &y);
 		p2[x] = insert(coeff,y,p2[x]);
 	}
-	//for(int i=0;i<n2;i++)
-	//	display(p2[i]);
+	printf("The second polynomial is:\n");
+	for(int i=0;i<n2;i++)
+		display(p2[i],i);
+	printf("\n\n");
 	printf("The sum of the given polynomials is: \n");
 	node **sum;
 	int i;
